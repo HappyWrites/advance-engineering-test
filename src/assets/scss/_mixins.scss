@@ -1,0 +1,16 @@
+@mixin text {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin container {
+  padding: 70px;
+
+  @media (max-width: $mobile) {
+    padding: 18px;
+  }
+}
+
+@mixin transition {
+  transition: all .2s linear;
+}
