@@ -1,13 +1,16 @@
 import axios from "axios";
+import { useAuthStore } from '../store/useAuthStore.js';
 const API_URL = import.meta.env.DEV ? import.meta.env.VITE_REQUEST_URL : '';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
+
 
 axios.interceptors.response.use(
   response => response,
   error => {
     if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-         
+      const authStore = useAuthStore()
+      authStore.logout()
     }
   });
 

@@ -18,18 +18,27 @@ const routes = [
   {
     path: '/login',
     name: "login",
-    component: LoginView
-  },  
+    component: LoginView,
+    meta: {
+      layout: 'layoutWithoutHeader',
+    },
+  },
   {
     path: "/orders/all",
     name: "orders-all",
-    component: OrdersAll
-  },  
+    component: OrdersAll,
+    meta: {
+      layout: 'layoutWithHeader',
+    },
+  },
   {
     path: "/orders/create",
     name: "orders-create",
     component: OrdersCreate,
-  },  
+    meta: {
+      layout: 'layoutWithHeader',
+    },
+  },
   {
     path: "/:catchAll(.*)",
     component: PageNotFound,
@@ -47,7 +56,7 @@ router.beforeEach(async (to) => {
   const auth = useAuthStore();
 
   if (authRequired && !auth.user) {
-      return '/login';
+    return '/login';
   }
 });
 

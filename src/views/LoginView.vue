@@ -8,8 +8,9 @@ const schema = Yup.object().shape({
   password: Yup.string().required('Пароль обязателен').min(8, 'Пароль должен быть не менee 8 символов')
 });
 
-function onSubmit(values, { setErrors }) {
-  const authStore = useAuthStore();
+const authStore = useAuthStore();
+
+function onSubmit(values, { setErrors }) {  
   const { user, password } = values;
 
   return authStore.login(user, password)
@@ -20,19 +21,19 @@ function onSubmit(values, { setErrors }) {
 </script>
 
 <template>
-  <div class="login-page">
+  <section class="login-page">
     <div class="container">
       <Form 
-        @submit="onSubmit" 
-        :validation-schema="schema" 
-        v-slot="{ errors }" 
-        class="form">
+      @submit="onSubmit" 
+      :validation-schema="schema" 
+      v-slot="{ errors }" 
+      class="form">
         <div class="container-input">
           <Field 
-            name="user" 
-            type="text" 
-            class="input" 
-            placeholder="Введите логин"
+          name="user" 
+          type="text" 
+          class="input" 
+          placeholder="Введите логин"
             :class="{ 'input-error': errors.user }" />
           <span class="error">
             {{ errors.user }}
@@ -40,10 +41,10 @@ function onSubmit(values, { setErrors }) {
         </div>
         <div class="container-input">
           <Field 
-            name="password" 
-            type="password" 
-            class="input" 
-            placeholder="Введите пароль"
+          name="password" 
+          type="password" 
+          class="input" 
+          placeholder="Введите пароль"
             :class="{ 'input-error': errors.password }" />
           <span class="error">
             {{ errors.password }}
@@ -51,11 +52,11 @@ function onSubmit(values, { setErrors }) {
         </div>
         <button class="button">Войти</button>
         <span 
-          v-if="errors.apiError" 
-          class="error error-api">
+        v-if="errors.apiError" 
+        class="error error-api">
           {{ errors.apiError }}
         </span>
       </Form>
-    </div>     
-  </div>
+    </div>
+  </section>
 </template>

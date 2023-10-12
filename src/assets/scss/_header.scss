@@ -1,0 +1,47 @@
+.header {
+  width: 100%;
+  height: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $colorBlue;
+  padding: 0 40px;
+
+  .nav,
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .link {
+    @include text;
+    text-decoration: none;
+    color: $colorWhite;
+  }
+
+  .router-link-active {
+    color: $colorGrey;
+  }
+
+  .user {
+    @include text;
+  }
+
+  .logout {
+    @include button;
+    width: 78px;
+    height: 27px;
+    background: $colorGrey;
+  }
+
+  @media (max-width: $mobile) {
+    padding: 0 15px;
+    gap: 10px;
+
+    .nav,
+    .info {
+      gap: 10px;
+    }
+  }
+}

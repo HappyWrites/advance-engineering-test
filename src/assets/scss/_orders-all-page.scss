@@ -1,0 +1,146 @@
+.orders-all-page {
+  @include container;
+
+  table {
+    width: 100%;
+  }
+
+  th,
+  td {
+    @include text;
+    padding: 10px 20px;
+    color: $colorBlack;
+    border-left: $border;
+  }
+
+  th {
+    font-weight: 400;
+
+    &:not(:last-of-type) {
+      border-top: $border;
+      border-bottom: $border;
+    }
+
+    &:nth-last-child(2) {
+      border-right: $border;
+    }
+
+    &:last-of-type {
+      width: 91px;
+      border-left: none;
+    }
+  }
+
+  td {
+    text-align: center;
+
+    &:not(:last-of-type) {
+      border-bottom: $border;
+    }
+
+    &:nth-last-child(2) {
+      border-right: $border;
+    }
+
+    &:last-of-type {
+      display: flex;
+      border: none;
+    }
+  }
+
+  .mobile-text {
+    display: none;
+  }
+
+  .button-table {
+    width: 18px;
+    height: 18px;
+    background: $colorWhite;
+    padding: 0;
+    border: $border;
+  }
+
+  .check {
+    display: block;
+    position: relative;
+
+    span {
+      position: absolute;
+      left: 1px;
+      top: 2px;
+      display: inline-block;
+      width: 9px;
+      height: 10px;
+      margin: -1px 3px 2px;
+      border: solid #000000;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg)
+    }
+  }
+
+  .delete {
+    margin-left: 15px;
+
+    span {
+      position: relative;
+      display: block;
+      width: 15px;
+      height: 15px;
+    }
+
+    span:before,
+    span:after {
+      position: absolute;
+      left: 7px;
+      content: '';
+      height: 15px;
+      width: 2px;
+      background-color: #333;
+    }
+
+    span:before {
+      transform: rotate(45deg);
+    }
+
+    span:after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  @media (max-width: $mobile) {
+    tbody {
+      display: block;
+
+      &:not(:last-of-type) {
+        margin-bottom: 15px;
+      }
+    }
+
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border: $border;
+    }
+
+    td {
+      text-align: left;
+      display: flex;
+      border: none;
+
+      &:not(:last-of-type) {
+        border: none;
+      }
+    }
+
+    .mobile-text {
+      display: inline;
+      margin-right: 5px;
+      font-weight: 700;
+    }
+  }
+}

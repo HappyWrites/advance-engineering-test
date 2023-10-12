@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { getUserInfo, logout } from '../utils/api.js'
+import { useOrdersStore } from './useOrdersStore.js';
 import router from '../router/router.js';
 
 export const useAuthStore = defineStore('auth', {
@@ -19,6 +20,9 @@ export const useAuthStore = defineStore('auth', {
         this.user = result[0].user;
         this.name = result[0].name;
         this.role = result[0].role;
+
+        const ordersStore = useOrdersStore()
+        ordersStore.getOrdersList()
 
         router.push({ name: 'orders-all' })
       } else {
