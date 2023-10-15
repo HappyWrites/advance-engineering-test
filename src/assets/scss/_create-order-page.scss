@@ -1,0 +1,50 @@
+.create-order-page {
+  @include container;
+  height: 100%;
+
+  .form {
+    width: 162px;
+  }
+
+  .title {
+    @include text;
+    padding-bottom: 50px;
+    color: $colorBlack;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .container-input {
+    @include container-input;
+  }
+
+  .input {
+    @include input;
+  }
+
+  .input-error {
+    @include input-error;
+  }
+
+  .error {
+    @include error;
+  }
+
+  .button {
+    @include button;
+    width: 115px;
+    height: 25px;
+    margin-top: 10px;
+    background-color: $colorGrey;
+  }
+
+  .error-api {
+    width: 104px;
+  }
+
+  @media (max-width: $mobile) {
+    .form {
+      width: 100%;
+    }
+  }
+}

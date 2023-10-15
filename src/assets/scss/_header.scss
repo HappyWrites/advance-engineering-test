@@ -26,6 +26,7 @@
 
   .user {
     @include text;
+    color: $colorBlack;
   }
 
   .logout {

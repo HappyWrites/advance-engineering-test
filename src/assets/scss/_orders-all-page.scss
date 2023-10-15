@@ -15,6 +15,7 @@
 
   th {
     font-weight: 400;
+    position: relative;
 
     &:not(:last-of-type) {
       border-top: $border;
@@ -48,8 +49,36 @@
     }
   }
 
-  .mobile-text {
-    display: none;
+  .completed {
+    td {
+      color: $colorTextCompleted;
+    }
+  }
+
+  .arrow-sort {
+    background: url(../../../public/image/icons/icon-arrow-sort.svg) center center no-repeat;
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    opacity: 0.5;
+    transition: all .2s linear;
+    cursor: pointer;
+    transform: rotate(180deg);
+    padding: 0;
+    border: none;
+    background-color: transparent;
+
+    &:hover,
+    &.active {
+      opacity: 1;
+    }
+
+    &.desc {
+      transform: rotate(0deg);
+    }
   }
 
   .button-table {
@@ -107,6 +136,20 @@
     }
   }
 
+  .empty {
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .empty-title {
+    @include text;
+    color: $colorBlack;
+    text-align: center;
+  }
+
   @media (max-width: $mobile) {
     tbody {
       display: block;
@@ -116,8 +159,17 @@
       }
     }
 
-    thead {
-      display: none;
+    th {
+      width: 50%;
+      text-align: start;
+
+      &:last-of-type {
+        display: none;
+      }
+
+      &:not(:last-of-type) {
+        border: none;
+      }
     }
 
     tr {
@@ -131,16 +183,11 @@
       text-align: left;
       display: flex;
       border: none;
+      width: 50%;
 
       &:not(:last-of-type) {
         border: none;
       }
-    }
-
-    .mobile-text {
-      display: inline;
-      margin-right: 5px;
-      font-weight: 700;
     }
   }
 }

@@ -47,3 +47,26 @@ export const getOrders = () => {
     .then(response => handleResponse(response))
     .catch(error => console.log(error))
 }
+
+export const deleteOrderFromList = id => {
+  return axios
+    .delete(API_URL + `orders/${id}`)
+    .then(response => handleResponse(response))
+    .catch(error => console.log(error))
+}
+
+export const changeStatusOrderFromList = (id, newStatus) => {
+  return axios
+    .patch(API_URL + `orders/${id}`, {
+      status: newStatus,
+    })
+    .then(response => handleResponse(response))
+    .catch(error => console.log(error))
+}
+
+export const createAnOrderFromList = data => {
+  return axios
+    .post(API_URL + 'orders', data)
+    .then(response => handleResponse(response))
+    .catch(error => console.log(error))
+}
