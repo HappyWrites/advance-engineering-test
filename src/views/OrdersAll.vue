@@ -1,36 +1,33 @@
 <script setup>
 import { useOrdersStore } from '../store/useOrdersStore.js';
 import { useAuthStore } from '../store/useAuthStore.js';
-import { computed, ref } from 'vue';
-import { getMonthEng } from '../helpers/listOfMonth.js'
+import { computed, ref, toRaw } from 'vue';
+import { sort } from '../helpers/sorting.js'
 
 import HeaderTable from '../components/HeaderTable.vue';
 import PopupConfirmation from '../components/PopupConfirmation.vue';
 
 const ordersStore = useOrdersStore()
+const orders = computed(() => ordersStore.orders)
 const sortingParameters = ref({
   column: '',
-  sort: ''
+  sorting: ''
 })
+
 const filteredOrders = computed(() => {
-  if (sortingParameters.value.column.length) {
-    return sortOrders()
+  const newOrders = structuredClone(toRaw(orders.value))
+  if (sortingParameters.value.sorting.length) {
+    return sort(newOrders, sortingParameters.value.column, sortingParameters.value.sorting)
   } else {
-    return ordersStore.orders
+    return orders.value
   }
 })
 
 function changeSortingParameters(columnParameter, sortParameter) {
-  this.sortingParameters.value.column = columnParameter;
-  this.sortingParameters.value.sort = sortParameter;
-}
+  sortingParameters.value.column = columnParameter;
+  sortingParameters.value.sorting = sortParameter;
 
-function sortOrders() {
-  if (sortingParameters.value.column === 'Дата заказа') {
-
-  } else {
-
-  }
+  console.log(sortingParameters.value.column)
 }
 
 const sortableColumns = ['Адрес', 'Дата заказа']
@@ -49,7 +46,6 @@ const role = computed(() => authStore.role)
 const isAdmin = computed(() => {
   return role.value === "ADMIN"
 })
-
 
 
 const orderToDelete = ref(null)
@@ -102,10 +98,13 @@ function popupConfirmed() {
       <thead>
         <tr>
           <HeaderTable 
-            v-for="headerTable in headersTable" 
-            :key="headerTable" 
+            v-for="(headerTable, key) in headersTable" 
+            :key="key" 
+            :headerTableKey="key"
             :headerTable="headerTable"
-            :sortableColumns="sortableColumns" />
+            :sortableColumns="sortableColumns" 
+            :sortingParameterColumn="sortingParameters.column"
+            @changeSortingParameters="changeSortingParameters"/>
           <th></th>
         </tr>
       </thead>

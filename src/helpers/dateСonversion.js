@@ -1,4 +1,4 @@
-import { getMonthEng, getMonthRu, listMonths } from "./listOfMonth"
+import { getMonthEng, listMonths } from "./listOfMonth"
 
 export const getDateNow = () => {
   let date = new Date();
@@ -6,9 +6,13 @@ export const getDateNow = () => {
   return getConvertedDate(date);
 }
 
-// export const getStandartDate = date => {
-//   return
-// }
+export const getStandartDate = date => {
+  let dateArray = date.split(' ')
+  dateArray[1] = getMonthEng(dateArray[1])
+  let dateString = dateArray.join(' ')
+  
+  return new Date(dateString)
+}
 
 export const getConvertedDate = date => {
   let day = date.getDate();

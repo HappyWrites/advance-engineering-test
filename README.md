@@ -1,7 +1,9 @@
-# Vue 3 + Vite
+# Добро пожаловать. Рада вам представить тестовое задание на позицию фронтенд-разработчика
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Скопируйте репозиторий [ссылка](https://github.com/HappyWrites/advance-engineering-test.git) 
 
-## Recommended IDE Setup
+Установите зависимости npm install
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Для запуска в режиме разработки введите команду npm run dev
+
+Для запуска json-server введите команду json-server --watch db.json

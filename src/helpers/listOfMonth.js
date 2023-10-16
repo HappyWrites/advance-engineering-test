@@ -31,8 +31,3 @@ export const listMonths = [
 export const getMonthEng = month => {
   return matchingMonths[month]
 }
-
-export const getMonthRu = month => {
-  return Object.keys(matchingMonths).find(key =>
-    object[key] === month);
-}
